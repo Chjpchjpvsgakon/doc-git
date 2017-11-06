@@ -1,0 +1,100 @@
+Để khởi tạo một kho Git ở đây, gõ lệnh sau:
+	------ git init
+để xem những gì hiện trạng của dự án của chúng tôi là:
+	------ git status
+
+Tôi tạo ra một tệp có tên octocat.txt trong kho octobox cho bạn (như bạn thấy trong trình duyệt dưới đây).
+Bạn nên chạy lệnh git status một lần nữa để xem trạng thái kho đã thay đổi như thế nào
+	------ touch octocat.txt
+
+Tốt, có vẻ như kho lưu trữ Git của chúng tôi hoạt động bình thường. Lưu ý Git nói octocat.txt là "untracked" không? Điều đó có nghĩa là Git thấy rằng octocat.txt là một tệp mới.
+Để cho Git bắt đầu theo dõi các thay đổi được thực hiện với octocat.txt, trước tiên chúng ta cần phải thêm nó vào khu dàn bằng cách sử dụng git add.
+	------ git add octocat.txt
+
+Let's run git status again to see where we stand:
+	------ git status
+
+Lưu ý Git nói những thay đổi được cam kết như thế nào? Các tệp được liệt kê ở đây nằm trong Khu vực lùi, và chúng chưa có trong kho của chúng tôi. Chúng ta có thể thêm hoặc xóa các tệp khỏi giai đoạn trước khi lưu trữ chúng trong kho lưu trữ.
+Để lưu trữ các thay đổi được tổ chức của chúng tôi, chúng tôi chạy lệnh cam kết với một thông báo mô tả những gì chúng tôi đã thay đổi. Hãy làm điều đó ngay bây giờ bằng cách gõ:
+	------ git commit -m "nội dung tin nhắn"
+
+Tuyệt quá! Bạn cũng có thể sử dụng các ký tự đại diện nếu bạn muốn thêm nhiều tệp cùng loại. Lưu ý rằng tôi đã thêm một bó các tệp .txt vào thư mục của bạn bên dưới.
+Tôi đặt một số trong một thư mục có tên "octofamily" và một số khác đã kết thúc trong thư mục gốc của "octobox" của chúng tôi. May mắn thay, chúng ta có thể thêm tất cả các tập tin mới bằng cách sử dụng một ký tự đại diện với git add. Đừng quên trích dẫn!
+	------ git add '*.txt'
+
+Được rồi, bạn đã thêm tất cả các tệp văn bản vào staging . Cảm thấy tự do để chạy trạng thái git để xem những gì bạn sắp c.
+	------ git commit -m 'Add all the octocat txt file'
+
+Vì vậy, chúng tôi đã thực hiện một vài cam kết. Bây giờ chúng ta hãy duyệt qua chúng để xem chúng ta đã thay đổi cái gì.
+May mắn cho chúng tôi, có đăng nhập git. Hãy suy nghĩ về nhật ký của Git như là một tạp chí nhớ tất cả những thay đổi mà chúng tôi đã cam kết cho đến thời điểm này, theo thứ tự chúng tôi cam kết. Hãy thử chạy nó bây giờ:
+	------ git log 
+
+Lam tôt lăm! Chúng tôi đã tiếp tục và tạo một kho GitHub trống mới cho bạn sử dụng với Hãy thử Git tại https://github.com/try-git/try_git.git. Để đẩy Repo địa phương của chúng tôi đến máy chủ GitHub, chúng ta sẽ cần phải thêm một kho lưu trữ từ xa.
+Lệnh này lấy tên từ xa và URL kho lưu trữ, trong trường hợp của bạn là https://github.com/try-git/try_git.git.
+Đi trước và chạy git remote add với các tùy chọn dưới đây:
+	------ git remove add origin https://github.com/try-git/try_git.git
+
+Lệnh push nói với Git nơi đặt cam kết của chúng tôi khi chúng tôi đã sẵn sàng, và bây giờ chúng tôi đã sẵn sàng. Vì vậy, hãy đẩy các thay đổi địa phương của chúng tôi vào repo gốc của chúng tôi (trên GitHub).
+Tên của từ xa của chúng tôi là nguồn gốc và tên chi nhánh mặc định của địa phương là master. The -u nói với Git để nhớ các thông số, để lần sau chúng ta chỉ có thể chạy git push và Git sẽ biết phải làm gì. Đi trước và đẩy nó!
+	------ git push -u origin master
+
+Hãy giả vờ một thời gian đã trôi qua. Chúng tôi đã mời những người khác vào dự án GitHub của chúng tôi, những người đã thực hiện thay đổi của bạn, thực hiện những cam kết riêng của họ và đẩy họ.
+Chúng tôi có thể kiểm tra các thay đổi trên kho GitHub của chúng tôi và kéo xuống bất kỳ thay đổi mới nào bằng cách chạy:
+	------ git pull origin master
+
+Uh oh, trông giống như đã có một số bổ sung và thay đổi cho gia đình octocat. Chúng ta hãy nhìn vào những gì khác với cam kết cuối cùng của chúng ta bằng cách sử dụng lệnh git diff.
+Trong trường hợp này, chúng ta muốn có sự khác biệt trong cam kết gần đây nhất của chúng ta, mà chúng ta có thể tham khảo bằng cách sử dụng con trỏ HEAD.
+	------ git diff HEAD
+
+Một sử dụng tuyệt vời cho diff là nhìn vào những thay đổi trong các tập tin đã được dàn dựng. Hãy nhớ rằng, các tập tin được dàn dựng là các tệp chúng tôi đã nói với git đã sẵn sàng để được cam kết.
+Hãy sử dụng git add to stage octofamily / octodog.txt, mà tôi vừa thêm vào cho gia đình
+	------ git add octafamily/octodog.txt
+
+Tốt, bây giờ đi trước và chạy git diff với tùy chọn - staged để xem những thay đổi bạn vừa mới dàn dựng. Bạn sẽ thấy rằng octodog.txt đã được tạo ra.
+	------ git diff staged
+
+Vì vậy, bây giờ mà octodog là một phần của gia đình, octocat là tất cả chán nản. Vì chúng ta yêu thích octocat nhiều hơn octodog, nên chúng ta sẽ cau mày lại bằng cách gỡ bỏ octodog.txt.
+Bạn có thể giải phóng các tập tin bằng cách sử dụng lệnh git reset. Hãy tiếp tục và xóa octofamily / octodog.txt.
+	------ git reset octofamily/octodog.txt
+
+git reset đã làm một công việc tuyệt vời của unstaging octodog.txt, nhưng bạn sẽ nhận thấy rằng ông vẫn còn đó. Anh ấy không còn nữa. Sẽ là tuyệt vời nếu chúng ta có thể quay trở lại với những điều đã xảy ra trước khi Octodog đến và phá hoại bữa tiệc.
+Các tập tin có thể được thay đổi trở lại cách chúng được ở cuối cam kết bằng cách sử dụng lệnh: git checkout - <target>. Hãy tiếp tục và loại bỏ tất cả những thay đổi kể từ lần commit cuối cùng cho octocat.txt
+	------ git checkout -- octocat.txt
+
+Khi các nhà phát triển đang làm việc trên một tính năng hoặc lỗi, họ thường tạo ra một bản sao (aka. Branch) của mã của họ, họ có thể thực hiện cam kết riêng. Sau đó, khi được thực hiện, họ có thể hợp nhất nhánh<br> này trở lại master branch của họ
+Chúng tôi muốn loại bỏ tất cả các octocats pesky, vì vậy hãy tạo một chi nhánh gọi là clean_up, nơi chúng tôi sẽ làm tất cả các công việc
+	------ git branch clean_up
+
+SWITCHING BRABCHES
+Tuyệt quá! Bây giờ nếu bạn gõ git branch bạn sẽ thấy hai nhánh cục bộ: một nhánh chính có tên master và nhánh mới của bạn có tên clean_up.
+Bạn có thể chuyển các chi nhánh bằng lệnh git checkout <branch>. Hãy thử ngay bây giờ để chuyển sang chi nhánh clean_up:
+	------ git checkout clean-	
+
+Removing All The Things
+Ok, vì vậy bạn đang ở trong chi nhánh clean_up. Bạn cuối cùng có thể loại bỏ tất cả những octocats pesky bằng cách sử dụng lệnh git rm mà sẽ không chỉ loại bỏ các tập tin thực tế từ đĩa, nhưng cũng sẽ giai đoạn loại bỏ các tập tin cho chúng tôi.
+Bạn sẽ muốn sử dụng một ký tự đại diện một lần nữa để có được tất cả các octocats trong một sweep, đi trước và chạy
+	------ git rm '*.txt'
+
+Commiting Branch Changes
+Bây giờ bạn đã xoá tất cả mèo bạn cần phải cam kết thay đổi của mình.
+Cảm thấy tự do để chạy trạng thái git để kiểm tra những thay đổi mà bạn sắp c.ommit
+	------ git commit -m "Remove all the cats"
+
+Switching Back to master
+Tuyệt vời, gần như đã kết thúc với con mèo ... er sửa lỗi, bạn chỉ cần chuyển về chi nhánh để bạn có thể sao chép (hoặc hợp nhất) các thay đổi của bạn từ chi nhánh clean_up trở lại chi nhánh chủ.
+Hãy tiếp tục và checkout the master branch:
+	------ git checkout master
+
+Preparing to Merge
+Alrighty, thời điểm đã đến khi bạn phải hợp nhất các thay đổi của bạn từ chi nhánh clean_up vào master branch. Hít một hơi thật sâu, nó không phải là đáng sợ.
+Chúng ta đã vào chi nhánh chính, vì vậy chúng ta chỉ cần yêu cầu Git kết hợp clean_up branch vào đó:
+	------ git merge clean_up
+
+Keeping Things Clean
+Xin chúc mừng! Bạn chỉ cần hoàn thành bugfix thành công đầu tiên và hợp nhất. Tất cả những gì còn lại để làm là dọn dẹp sau khi bạn tự làm. Vì bạn đã làm xong với chi nhánh clean_up, bạn không cần nó nữa.
+Bạn có thể sử dụng git branch -d <branch name> để xóa một branch. Đi trước và xóa các chi nhánh clean_up bây giờ:
+	------ git branch -d clean_up
+
+The Final Push
+Ở đây, chúng ta, ở bước cuối cùng. Tôi tự hào rằng bạn đã thực hiện nó đến nay, và nó được học tập tuyệt vời Git với bạn. Tất cả những gì còn lại để bạn làm bây giờ là đẩy tất cả mọi thứ bạn đã làm việc vào kho từ xa của bạn, và bạn đã hoàn tất!
+	------ git push
